@@ -1,0 +1,198 @@
+idex html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartLife Hub - Learn, Earn & Relax</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f6f7fb;color:#222}
+header{background:#111827;color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
+header b{font-size:22px} header b span{color:#facc15}
+nav a{color:#fff;text-decoration:none;margin-left:12px;font-size:14px;font-weight:bold}
+.btn{background:#facc15;color:#111;padding:10px 18px;border:0;border-radius:20px;font-weight:bold;cursor:pointer}
+.btn2{background:#fff;color:#111;padding:10px 18px;border:1px solid #ddd;border-radius:20px;font-weight:bold;cursor:pointer}
+.hero{background:linear-gradient(135deg,#111827,#4f46e5);color:#fff;padding:45px 18px;text-align:center}
+.hero h1{font-size:34px;line-height:1.2} .hero p{opacity:.85;margin:12px auto;max-width:650px}
+.pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:15px}
+.pills span{background:rgba(255,255,255,.15);padding:7px 12px;border-radius:20px;font-size:13px}
+.wrap{max-width:1050px;margin:auto;padding:20px 15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:15px}
+.card{background:#fff;padding:18px;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.card h3{margin-bottom:6px} .card p{font-size:14px;color:#555;line-height:1.5}
+.card img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+.section{margin:30px 0} .section h2{margin-bottom:5px} .section>p{color:#666;font-size:14px;margin-bottom:15px}
+.tiers{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:15px}
+.tier{background:#fff;border-radius:16px;padding:20px;text-align:center;border:2px solid #eee;position:relative}
+.tier.gold{border-color:#facc15;background:#fffbeb;transform:scale(1.02)}
+.tier.ring{border-color:#a855f7;background:#faf5ff}
+.tier h3{font-size:20px} .price{font-size:32px;font-weight:900;margin:10px 0} .price small{font-size:14px}
+.tier ul{list-style:none;text-align:left;font-size:14px;line-height:2}
+.tier ul li::before{content:"✅ "}
+.tier ul li.no{opacity:.4} .tier ul li.no::before{content:"🔒 "}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-bottom:10px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;align-items:center;justify-content:center;padding:15px}
+.modal.open{display:flex}
+.box{background:#fff;width:100%;max-width:520px;padding:22px;border-radius:16px;max-height:92vh;overflow:auto}
+.tabs{display:flex;gap:8px;margin-bottom:12px} .tabs button{flex:1;padding:10px;border-radius:10px;border:1px solid #ddd;background:#f9fafb;cursor:pointer;font-weight:bold}
+.tabs button.active{background:#111827;color:#fff}
+.chatbox{background:#fff;border-radius:14px;padding:15px}
+#msgs{height:180px;overflow:auto;background:#f9fafb;border-radius:10px;padding:10px;margin-bottom:10px;font-size:14px}
+.msg{margin-bottom:8px} .msg b{color:#4f46e5}
+.video{width:100%;height:320px;border:0;border-radius:14px;background:#000}
+.badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:bold}
+.b-basic{background:#e0e7ff} .b-premium{background:#fef3c7} .b-gold{background:#fde68a} .b-ring{background:#e9d5ff}
+.hidden{display:none}
+.limit{font-size:13px;background:#fef3c7;padding:10px;border-radius:10px;margin:10px 0}
+footer{background:#111827;color:#fff;text-align:center;padding:20px;font-size:13px}
+.whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;z-index:100;box-shadow:0 4px 15px rgba(0,0,0,.3)}
+@media(max-width:600px){.hero h1{font-size:26px} nav{display:none}}
+</style>
+</head>
+<body>
+
+<header><b>SmartLife <span>Hub</span></b><nav><a href="#learn">Learn</a><a href="#music">Music</a><a href="#kids">Kids</a><a href="#plans">Plans</a><a href="#meet">Meet</a><a href="#" onclick="openAuth()">Login</a></nav><button class="btn" onclick="openAuth()">Join - 10 Bob</button></header>
+
+<div class="hero">
+<h1>Learn. Earn. Relax. Grow. 🎧💰</h1>
+<p>Money tips, business ideas, music for focus, kids holiday activities & stress-free life — all in one place. Join from only <b>10 Bob</b>.</p>
+<div class="pills"><span>💰 Make Money</span><span>🎵 Music</span><span>🧒 Kids Holiday</span><span>🧘 No Stress</span><span>🏢 Business</span></div>
+<br><br><button class="btn" onclick="openAuth()">Start Now - 10 Bob →</button> <button class="btn2" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">See Plans</button>
+<p style="margin-top:15px">Questions? WhatsApp us: <a href="https://wa.me/254757909738" style="color:#facc15;font-weight:bold">0757909738</a></p>
+<p id="userStatus" style="margin-top:12px;font-size:14px"></p>
+</div>
+
+<div class="wrap">
+
+<!-- LEARN -->
+<div class="section" id="learn"><h2>💰 How To Make Money - Daily Tips</h2><p>Free preview. Full lessons unlock after you join.</p>
+<div class="grid">
+<div class="card"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600"><h3>1. Sell Online (No Shop)</h3><p>Start with WhatsApp + TikTok. Buy small, sell small. Post 3x per day. Profit 20-30%.</p><button class="btn2" onclick="needPlan('Premium')">Unlock Full Lesson 🔒</button></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600"><h3>2. Freelancing</h3><p>Design, writing, video editing. Use phone only. Charge 500 - 5000 Bob per job.</p><button class="btn2" onclick="needPlan('Basic')">Start Lesson</button></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600"><h3>3. Business Ideas Under 1000 Bob</h3><p>Mitumba, snacks, phone accessories, digital products. Full 20 ideas inside Premium.</p><button class="btn2" onclick="needPlan('Gold')">Unlock Gold Ideas 👑</button></div>
+</div></div>
+
+<!-- MUSIC -->
+<div class="section" id="music"><h2>🎵 Music For Focus, Work & Relax</h2><p>Listen while you learn. Different music for different mood.</p>
+<div class="grid">
+<div class="card"><h3>🎧 Focus Beats</h3><p>Lo-fi + Amapiano soft for studying & working.</p><audio controls style="width:100%"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio></div>
+<div class="card"><h3>🌅 Morning Motivation</h3><p>Gospel + Afrobeat to start your day strong.</p><audio controls style="width:100%"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3"></audio></div>
+<div class="card"><h3>😌 Stress Relief</h3><p>Calm piano + nature sounds before sleep.</p><audio controls style="width:100%"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3"></audio></div>
+</div></div>
+
+<!-- KIDS -->
+<div class="section" id="kids"><h2>🧒 Kids Holiday - Fun + Learning</h2><p>Teach children how to spend holiday well, no phone addiction.</p>
+<div class="grid">
+<div class="card"><h3>📅 Holiday Timetable</h3><p>7am Wake • 8am Reading • 10am Play • 12pm Help at home • 2pm Drawing • 4pm Sport • 6pm Story</p></div>
+<div class="card"><h3>🎨 10 Holiday Activities</h3><p>1. Drawing 2. Gardening 3. Cooking with mum 4. Story telling 5. Small business (lemonade) 6. Cleaning challenge</p></div>
+<div class="card"><h3>🧘 Kids No Stress</h3><p>No shouting. Talk calmly. Let kids play outside 1hr daily. No phone after 7pm.</p></div>
+</div></div>
+
+<!-- PLANS -->
+<div class="section" id="plans"><h2>💎 Join & Choose Your Plan</h2><p>Anyone who joins pays. Pay more = use more. Limits protect the community.</p>
+<div class="limit">⚠️ <b>How Limits Work:</b> Basic = 1 device, 1hr/day. Premium = 3 devices, 4hrs. Gold = Unlimited + Video Calls. Ring = Everything + VIP + Private Mentor.</div>
+<div class="tiers">
+<div class="tier"><h3>🟢 BASIC</h3><div class="price">10 <small>Bob / Week</small></div><ul><li>Money Tips (Basic)</li><li>Music Player</li><li>Kids Holiday Guide</li><li class="no">Video Calls</li><li class="no">Conference Meet</li><li class="no">Business Course</li></ul><br><button class="btn2" onclick="pay('Basic',10)">Pay 10 Bob - M-Pesa</button></div>
+<div class="tier"><h3>🔵 PREMIUM</h3><div class="price">100 <small>Bob / Month</small></div><ul><li>All Basic</li><li>Full Business Course</li><li>Group Chat</li><li>Video Call - 30 min/day</li><li class="no">Conference Meet</li></ul><br><button class="btn" onclick="pay('Premium',100)">Pay 100 Bob</button></div>
+<div class="tier gold"><span class="badge b-gold">MOST POPULAR</span><h3>👑 GOLD</h3><div class="price">500 <small>Bob / Month</small></div><ul><li>All Premium</li><li>Unlimited Video Calls</li><li>Conference Meet - Host</li><li>1-on-1 Mentor</li><li>Download Lessons</li></ul><br><button class="btn" onclick="pay('Gold',500)">Pay 500 Bob - Gold</button></div>
+<div class="tier ring"><span class="badge b-ring">VIP RING 💍</span><h3>💍 RING VIP</h3><div class="price">1000 <small>Bob / Month</small></div><ul><li>All Gold</li><li>Private VIP Ring Group</li><li>Live Conference Every Week</li><li>Business Funding Tips</li><li>Priority Support 24/7</li></ul><br><button class="btn" onclick="pay('Ring',1000)">Pay 1000 Bob - Ring</button></div>
+</div>
+<p style="font-size:12px;color:#888;margin-top:10px">Pay via M-Pesa to: <b>0757909738</b> - Send money then click "I Have Paid". We confirm on WhatsApp.</p>
+</div>
+
+<!-- MEET / CHAT / VIDEO -->
+<div class="section" id="meet"><h2>📞 Video Calls • Chatting • Conference Meet</h2><p>Gold & Ring can host. Basic can only watch.</p>
+<div class="grid">
+<div class="card"><h3>💬 Community Chat</h3><div id="msgs"><div class="msg"><b>Admin:</b> Welcome to SmartLife Hub! Introduce yourself 👋</div></div><input id="chatInput" placeholder="Type message..."><button class="btn" onclick="sendChat()">Send Chat</button><p id="chatLock" style="font-size:12px;color:red;margin-top:8px"></p></div>
+<div class="card"><h3>📹 Video Call Room</h3><p>Create your own room name and join video call with members.</p><input id="roomName" placeholder="Room name e.g smartlife-123" value="smartlife-hub"><button class="btn" onclick="joinVideo()">Join Video Call</button><div id="videoBox" style="margin-top:10px"></div></div>
+<div class="card"><h3>👥 Conference Meet</h3><p>Weekly live: <b>Saturday 4pm</b> - How to make money this week.</p><p>Topic: Business + Mindset + Q&A</p><button class="btn" onclick="joinVideo()">Join Conference →</button><p style="font-size:13px;margin-top:10px">🔒 Only Premium+ can speak. Basic can watch.</p></div>
+</div></div>
+
+</div>
+
+<footer>© 2026 SmartLife Hub • Learn • Earn • Relax • Made for Africa • Pay via M-Pesa: 0757909738 • Contact: WhatsApp <a href="https://wa.me/254757909738" style="color:#facc15;font-weight:bold">0757909738</a></footer>
+
+<a href="https://wa.me/254757909738?text=Hi%20SmartLife%20Hub!%20I%20want%20to%20join" class="whatsapp-float" target="_blank">💬</a>
+
+<!-- AUTH MODAL -->
+<div class="modal" id="authModal"><div class="box">
+<span style="float:right;cursor:pointer;font-size:22px" onclick="closeAuth()">×</span>
+<h2>Welcome to SmartLife Hub 👋</h2><p style="font-size:13px;color:#666;margin:5px 0 12px">Login or create account. Then pay from 10 Bob to activate.</p>
+<div class="tabs"><button id="tabLogin" class="active" onclick="showTab('login')">Login</button><button id="tabSignup" onclick="showTab('signup')">Sign Up</button></div>
+<div id="loginForm"><input id="loginEmail" placeholder="Email or Phone"><input id="loginPass" type="password" placeholder="Password"><button class="btn" style="width:100%" onclick="doLogin()">Login →</button></div>
+<div id="signupForm" class="hidden"><input id="suName" placeholder="Full Name"><input id="suEmail" placeholder="Email"><input id="suPhone" placeholder="Phone / M-Pesa Number"><input id="suPass" type="password" placeholder="Create Password"><select id="suPlan"><option>Basic - 10 Bob</option><option>Premium - 100 Bob</option><option>Gold - 500 Bob</option><option>Ring VIP - 1000 Bob</option></select><button class="btn" style="width:100%" onclick="doSignup()">Create Account & Pay →</button><p style="font-size:12px;margin-top:8px">By joining you agree to community rules. No hate, no scam.</p></div>
+<div id="authMsg" style="margin-top:10px;font-size:14px;color:green"></div>
+</div></div>
+
+<!-- PAY MODAL -->
+<div class="modal" id="payModal"><div class="box">
+<span style="float:right;cursor:pointer;font-size:22px" onclick="closePay()">×</span>
+<h2 id="payTitle">Pay with M-Pesa</h2><p style="font-size:13px;color:#666">Send to 0757909738 then click confirm.</p>
+<input id="payPhone" placeholder="Your M-Pesa Number e.g 0757909738">
+<p style="background:#f0fdf4;padding:12px;border-radius:10px;font-size:14px">Send Money To: <b>0757909738</b><br>Amount: <b id="payAmount">10 Bob</b><br><a href="https://wa.me/254757909738?text=Hi%20I%20have%20paid" target="_blank" style="color:green;font-weight:bold">Send proof on WhatsApp →</a></p>
+<button class="btn" style="width:100%" onclick="confirmPay()">I Have Paid - Activate Plan ✅</button>
+</div></div>
+
+<script>
+let user = JSON.parse(localStorage.getItem('sl_user')||'null');
+let currentPlan = 'Basic', currentAmount = 10;
+function updateStatus(){
+  document.getElementById('userStatus').innerHTML = user ? `Logged in as <b>${user.name}</b> • Plan: <span class="badge b-${user.plan.toLowerCase()}">${user.plan}</span> • <a href="#" onclick="logout()" style="color:#facc15">Logout</a>` : 'Not logged in yet — Join from 10 Bob to unlock everything';
+}
+function openAuth(){document.getElementById('authModal').classList.add('open')}
+function closeAuth(){document.getElementById('authModal').classList.remove('open')}
+function showTab(t){
+  document.getElementById('loginForm').classList.toggle('hidden',t!=='login');
+  document.getElementById('signupForm').classList.toggle('hidden',t==='signup');
+  document.getElementById('tabLogin').classList.toggle('active',t==='login');
+  document.getElementById('tabSignup').classList.toggle('active',t==='signup');
+}
+function doSignup(){
+  const name=document.getElementById('suName').value, email=document.getElementById('suEmail').value, phone=document.getElementById('suPhone').value;
+  if(!name||!email){alert('Fill name and email');return;}
+  const plan=document.getElementById('suPlan').value.split(' - ')[0];
+  user={name,email,phone,plan}; localStorage.setItem('sl_user',JSON.stringify(user));
+  document.getElementById('authMsg').innerText='Account created! Now pay to activate '+plan;
+  setTimeout(()=>{closeAuth(); pay(plan, plan==='Basic'?10:plan==='Premium'?100:plan==='Gold'?500:1000)},600);
+  updateStatus();
+}
+function doLogin(){
+  const email=document.getElementById('loginEmail').value;
+  if(!email){alert('Enter email');return;}
+  if(user && user.email===email){document.getElementById('authMsg').innerText='Welcome back '+user.name; setTimeout(closeAuth,600);}
+  else{user={name:email.split('@')[0],email,plan:'Basic'}; localStorage.setItem('sl_user',JSON.stringify(user)); document.getElementById('authMsg').innerText='Logged in as new user - Basic'; setTimeout(closeAuth,600);}
+  updateStatus();
+}
+function logout(){localStorage.removeItem('sl_user'); user=null; updateStatus(); location.reload();}
+function pay(plan,amount){currentPlan=plan; currentAmount=amount; document.getElementById('payTitle').innerText='Pay '+amount+' Bob - '+plan+' Plan'; document.getElementById('payAmount').innerText=amount+' Bob'; document.getElementById('payModal').classList.add('open');}
+function closePay(){document.getElementById('payModal').classList.remove('open');}
+function confirmPay(){
+  if(!user) user={name:'Guest',email:'guest',plan:currentPlan};
+  user.plan=currentPlan; localStorage.setItem('sl_user',JSON.stringify(user));
+  alert('✅ Payment Confirmed! Your '+currentPlan+' plan is now ACTIVE. Welcome! Send proof to 0757909738 on WhatsApp');
+  closePay(); updateStatus();
+}
+function needPlan(need){
+  if(!user){openAuth(); return;}
+  const levels={Basic:1,Premium:2,Gold:3,Ring:4};
+  if(levels[user.plan]>=levels[need]) alert('✅ You have access! Opening lesson...');
+  else alert('🔒 This needs '+need+' plan. You have '+user.plan+'. Please upgrade!');
+}
+function sendChat(){
+  if(!user){openAuth(); return;}
+  if(user.plan==='Basic'){document.getElementById('chatLock').innerText='🔒 Chat needs Premium+. Upgrade to chat.'; return;}
+  const v=document.getElementById('chatInput').value; if(!v) return;
+  document.getElementById('msgs').innerHTML+=`<div class="msg"><b>${user.name} (${user.plan}):</b> ${v}</div>`;
+  document.getElementById('chatInput').value='';
+}
+function joinVideo(){
+  if(!user){openAuth(); return;}
+  if(user.plan==='Basic'){alert('🔒 Video Calls need Premium+. Upgrade to join.'); return;}
+  const room=document.getElementById('roomName').value||'smartlife-hub';
+  document.getElementById('videoBox').innerHTML=`<iframe class="video" src="https://meet.jit.si/${room}" allow="camera; microphone; fullscreen"></iframe><p style="font-size:12px;margin-top:6px">You are in room: ${room} • Share link with members</p>`;
+}
+updateStatus();
+</script>
+</body>
+</html>
